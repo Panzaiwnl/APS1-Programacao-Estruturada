@@ -1,0 +1,113 @@
+
+/*
+APS 1 – Programação Estruturada
+Professor: Sérgio Assunção Monteiro
+Disciplina: Programação Estruturada
+Turma: 931
+aluno: Pedro Henrique Panza
+Matrícula: 2018200543
+unidade: Meier V
+*/
+
+/*
+Questão 01  
+Desenvolver um programa em C que faça:
+1. Criar 5 vetores contendo 10 valores reais gerados aleatoriamente;
+2. Utilizar uma função recursiva para somar apenas os elementos pares de cada vetor;
+3. Retornar maior elemento do item 2;
+4. Colocar a solução no GITHUB = https://github.com/Panzaiwnl/APS1-Programacao-Estruturada/
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <time.h>
+#define valor 10
+
+void entradaDeDados(int x[]);
+int Par(int num);
+int somarNumerosParesRecursivo(int q, int x[]);
+void maiorNumero( int x);
+int maior;
+		
+ int main(){
+		srand(time(NULL));
+		setlocale(LC_ALL, "");
+		int v1[valor],v2[valor],v3[valor],v4[valor],v5[valor];
+		int soma_par;
+		int Par(int num);
+		
+//		1. Criar 5 vetores contendo 10 valores inteiros gerados aleatoriamente;
+		printf("Gerando números inteiros de forma aleatoria.\n\n");
+		entradaDeDados(v1);printf("\n\n");
+		entradaDeDados(v2);printf("\n\n");
+		entradaDeDados(v3);printf("\n\n");
+		entradaDeDados(v4);printf("\n\n");
+		
+	 
+//		2. Utilizar uma função recursiva para somar apenas os elementos pares de cada vetor;
+		printf("Somando números pares de cada vetor.\n\n");
+		soma_par = somarNumerosParesRecursivo(valor-1, v1);
+		printf("\nA soma dos pares é: %i\n",soma_par);
+		maiorNumero(soma_par);
+		
+		soma_par = somarNumerosParesRecursivo(valor-1, v2);
+		printf("\nA soma dos pares é: %i\n",soma_par);
+		maiorNumero(soma_par);
+		
+		soma_par = somarNumerosParesRecursivo(valor-1, v3);
+		printf("\nA soma dos pares é: %i\n",soma_par);
+		maiorNumero(soma_par);
+		
+		soma_par = somarNumerosParesRecursivo(valor-1, v4);
+		printf("\nA soma dos pares é: %i\n",soma_par);
+		maiorNumero(soma_par);
+		
+		soma_par = somarNumerosParesRecursivo(valor-1, v5);
+		printf("\nA soma dos pares é: %i\n",soma_par);
+		maiorNumero(soma_par);
+		
+		
+		
+		//    3. Retornar maior elemento do item 2;
+		printf("O maior elemento entre todos os vetores.\n\n");
+		printf("\nO maior elemento é: %d\n", maior);
+		
+}
+
+//		1. Criar 5 vetores contendo 10 valores reais gerados aleatoriamente;
+void entradaDeDados(int x[]){
+int i;
+	for(i=0;i<valor;i++){
+	x[i]=rand()%100;
+	printf("%d ",x[i]);
+	}
+}
+
+//		2. Função para saber se o número é par;
+int Par(int num){
+	if(num%2==0){
+	  return 1;
+	}
+	return 0;
+}
+
+//		2. Utilizar uma função recursiva para somar apenas os elementos pares de cada vetor;
+int somarNumerosParesRecursivo(int q, int x[]){
+int r;
+	if(q==0){
+	return Par(x[0])?x[0]:0;
+	}
+r = Par(x[q])?x[q]:0;
+return r+somarNumerosParesRecursivo(q-1,x);
+}
+
+//    3. Retornar maior elemento do item 2;
+void	maiorNumero( int x){
+int q;
+
+	if(maior < x){
+	maior = x;
+	}
+}
+
